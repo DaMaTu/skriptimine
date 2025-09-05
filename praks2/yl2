@@ -1,0 +1,18 @@
+#! /bin/bash
+
+# Siin väljastab script kasutajale kuupäeva ja ajaga seotud info
+
+# Väljastab kuupäeva koos nädalapäeva ja kuuga
+echo "Today is $(date +"%A, %B %d, %Y")" 
+
+# Väljastab kellaja
+echo "Time is $(date +"%H:%M")"
+
+echo ""
+
+# Väljastab jooksva kuu kalendri pealkirjaga
+
+date +"Calender of %B %Y"
+
+# Väljastame jooksva kuu kalendri
+cal
