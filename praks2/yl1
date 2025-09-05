@@ -2,4 +2,13 @@
 
 # See script väljastab kasutajale "Tere, user!"
 
-  echo "Tere, user!"
+# Kui on kasutaja oliver väljastab ta talle eraldi tere
+
+if [ "$USER" = "oliver" ]; then
+    echo -n "Tere, oliver"
+
+else
+   echo -n "Tere, $USER"
+fi
+
+echo "!"
