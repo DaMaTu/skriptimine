@@ -1,0 +1,5 @@
+#! /bin/bash
+
+# See script väljastab kasutajale "Tere, user!"
+
+  echo "Tere, user!"
