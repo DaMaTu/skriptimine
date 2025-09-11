@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Kontroll, kas sisendparameetreid on täpselt üks
+if [ $# -ne 1 ]; then
+    echo "Kasutamine: $0 <täisarv>"
+    echo "Palun sisesta täpselt üks täisarv skripti käivitamisel."
+    exit 1
+fi
+
+# Võtame käsurea argumendi
+arv=$1
+
+# Kontrollime, kas sisestatud väärtus on täisarv
+if ! [[ $arv =~ ^-?[0-9]+$ ]]; then
+    echo "Viga: '$arv' ei ole täisarv."
+    exit 1
+fi
+
+# Kontrollib, kas arv jagub 2-ga
+if [ $((arv % 2)) -eq 0 ]; then
+   echo "Antud arv on paaris"
+else 
+   echo "Antud arv on paaritu"
+fi
