@@ -1,0 +1,23 @@
+#!/bin/bash
+# Skript arvutab täisbusside arvu ja allesjäänud inimeste arvu
+
+echo -n "Sisesta reisijate arv grupis: "
+read reisijad
+
+echo -n "Sisesta kohtade arv bussis: "
+read kohad
+
+#Täisbusside arv (jagamine täisarvuna)
+bussid=$(( reisijad / kohad ))
+
+#Allesjäänud inimeste arv (jääk)
+alles=$(( reisjiad / kohad ))
+
+#Kui busse jääb puudu lisab juurde
+
+if [ $alles -gt 0 ];then
+   bussid=$((bussid + 1))
+fi
+
+
+echo "Kokku on vaja $bussid täisbussi"
