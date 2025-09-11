@@ -1,0 +1,14 @@
+#!/bin/bash
+
+#Sisestad suvalise täisarvu ning ta loeb sisestatud arvu
+
+echo -n "Sisesta suvaline täisarv: "
+read arv
+
+#Kontrollib kas arv jagub 2'ga 
+
+if [ $((arv % 2)) -eq 0 ]; then
+   echo "Antud arv on paaris"
+else 
+   echo "Antud arv on paaritu"
+fi
