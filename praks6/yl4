@@ -1,0 +1,35 @@
+#!/bin/bash
+# Skript kontrollib, kas kasutaja sisestatud arv on algarv või mitte (kasutab while-tsüklit)
+# Kui sisend ei ole täisarv, antakse veateade
+
+read -p "Sisesta suvaline arv: " arv
+
+# Kontroll: lubatud ainult täisarvud (positiivsed või negatiivsed)
+if ! [[ "$arv" =~ ^-?[0-9]+$ ]]; then
+    echo "Viga: sisend peab olema täisarv!"
+    exit 1
+fi
+
+# Algarv peab olema vähemalt 2
+if [ $arv -lt 2 ]; then
+    echo "$arv - ei ole algarv"
+    exit 0
+fi
+
+jagaja=2
+on_algarv=1
+
+while [ $jagaja -lt $arv ]
+do
+    if (( arv % jagaja == 0 )); then
+        on_algarv=0
+        break
+    fi
+    ((jagaja++))
+done
+
+if [ $on_algarv -eq 1 ]; then
+    echo "$arv - on algarv"
+else
+    echo "$arv - ei ole algarv"
+fi
