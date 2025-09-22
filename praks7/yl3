@@ -1,0 +1,43 @@
+#!/bin/bash
+# Skript kuvab täheristküliku, mille esimene ja viimane rida on täis tärne,
+# vahepealsed read algavad ja lõppevad tärniga ning vahepeal on tühikud.
+
+# Funktsioon, mis kontrollib, kas sisestus on positiivne täisarv
+is_positive_integer() {
+  [[ "$1" =~ ^[1-9][0-9]*$ ]]
+}
+
+# Küsi sisend ja kontrolli
+read -p "Sisesta ridade arv: " read_count
+if ! is_positive_integer "$read_count"; then
+  echo "Viga: palun sisesta positiivne täisarv ridade arvuks."
+  exit 1
+fi
+
+read -p "Sisesta tärnide arv reas: " star_count
+if ! is_positive_integer "$star_count"; then
+  echo "Viga: palun sisesta positiivne täisarv tärnide arvuks."
+  exit 1
+fi
+
+# Joonista kujund
+for (( i=1; i<=read_count; i++ ))
+do
+  echo -n "$i. "
+  if [[ $i -eq 1 || $i -eq $read_count ]]; then
+    # Esimene ja viimane rida – täis tärne
+    for (( j=1; j<=star_count; j++ )); do
+      echo -n "* "
+    done
+  else
+    # Sisemised read – tärn, tühikud, tärn
+    echo -n "*"
+    for (( j=1; j<=((star_count - 2)); j++ )); do
+      echo -n "  "
+    done
+    if (( star_count > 1 )); then
+      echo -n " *"
+    fi
+  fi
+  echo ""
+done
