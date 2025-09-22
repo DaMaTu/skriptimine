@@ -1,0 +1,25 @@
+#!/bin/bash
+# Skript leiab kasutaja sisestatud täisarvu numbrite summa while-tsükliga
+# Kui sisend ei ole täisarv, antakse veateade
+
+read -p "Sisesta suvaline täisarv: " arv
+
+# Kontroll: lubatud ainult täisarvud (positiivsed või negatiivsed)
+if ! [[ "$arv" =~ ^-?[0-9]+$ ]]; then
+    echo "Viga: sisend peab olema täisarv!"
+    exit 1
+fi
+
+summa=0
+
+# Teeme töötluseks absoluutväärtuse (negatiivsete arvude jaoks)
+temp=${arv#-}
+
+while [ $temp -gt 0 ]
+do
+    number=$((temp % 10))
+    summa=$((summa + number))
+    temp=$((temp / 10))
+done
+
+echo "Arvu $arv numbrite summa on: $summa"
