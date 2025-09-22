@@ -1,0 +1,38 @@
+#!/bin/bash
+# Skript küsib kasutajalt ridade arvu ja väljastab ridade kaupa kujundi,
+# kus igal real on kasvav arv tärne (*) ja ülejäänud kohad on täidetud ringidega (o).
+
+# Kontrollime, et sisend oleks positiivne täisarv
+is_positive_integer() {
+  [[ "$1" =~ ^[1-9][0-9]*$ ]]
+}
+
+read -p "Sisesta ridade arv: " read_count
+if ! is_positive_integer "$read_count"; then
+  echo "Viga: palun sisesta positiivne täisarv."
+  exit 1
+fi
+
+for (( i=1; i<=read_count; i++ ))
+do
+  echo -n "$i. "
+  
+  # Ringide arv = read_count - i
+  o_count=$((read_count - i))
+  # Tärnide arv = i
+  star_count=$i
+  
+  # Väljasta ringid
+  for (( j=1; j<=o_count; j++ ))
+  do
+    echo -n "o "
+  done
+  
+  # Väljasta tärnid
+  for (( j=1; j<=star_count; j++ ))
+  do
+    echo -n "* "
+  done
+  
+  echo ""
+done
