@@ -1,0 +1,26 @@
+#!/bin/bash
+# Skript küsib kasutajalt ridade arvu ja joonistab tärnidest kasvava kolmnurga,
+# kus iga rea tärnide arv vastab rea numbrile.
+
+# Funktsioon sisendi kontrolliks (positiivne täisarv)
+is_positive_integer() {
+  [[ "$1" =~ ^[1-9][0-9]*$ ]]
+}
+
+# Küsi kasutajalt ridade arv
+read -p "Sisesta ridade arv: " read_count
+if ! is_positive_integer "$read_count"; then
+  echo "Viga: palun sisesta positiivne täisarv."
+  exit 1
+fi
+
+# Joonista kolmnurk
+for (( i=1; i<=read_count; i++ ))
+do
+  echo -n "$i. "
+  for (( j=1; j<=i; j++ ))
+  do
+    echo -n "* "
+  done
+  echo ""
+done
