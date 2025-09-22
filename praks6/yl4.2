@@ -1,0 +1,27 @@
+#!/bin/bash
+# Skript kontrollib esimese 20 täisarvu kohta, kas need on algarvud või mitte (kasutab while-tsüklit)
+
+arv=1
+while [ $arv -le 20 ]
+do
+    if [ $arv -lt 2 ]; then
+        echo "$arv - ei ole algarv"
+    else
+        jagaja=2
+        on_algarv=1
+        while [ $jagaja -lt $arv ]
+        do
+            if (( arv % jagaja == 0 )); then
+                on_algarv=0
+                break
+            fi
+            ((jagaja++))
+        done
+        if [ $on_algarv -eq 1 ]; then
+            echo "$arv - on algarv"
+        else
+            echo "$arv - ei ole algarv"
+        fi
+    fi
+    ((arv++))
+done
