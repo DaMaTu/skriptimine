@@ -1,0 +1,31 @@
+#!/bin/bash
+# Skript küsib rea ja tärnide arvu ning väljastab vastava ristküliku
+
+# Funktsioon, mis kontrollib, kas sisend on positiivne täisarv
+is_positive_integer() {
+  [[ "$1" =~ ^[1-9][0-9]*$ ]]
+}
+
+# Küsi ridade arvu ja kontrolli sisendit
+read -p "Sisesta ridade arv: " read_count
+if ! is_positive_integer "$read_count"; then
+  echo "Viga: palun sisesta positiivne täisarv ridade arvuks."
+  exit 1
+fi
+
+# Küsi tärnide arvu reas ja kontrolli sisendit
+read -p "Sisesta tärnide arv reas: " star_count
+if ! is_positive_integer "$star_count"; then
+  echo "Viga: palun sisesta positiivne täisarv tärnide arvuks."
+  exit 1
+fi
+
+# Joonista ristkülik
+for (( i=1; i<=read_count; i++ ))
+do
+  for (( j=1; j<=star_count; j++ ))
+  do
+    echo -n "* "
+  done
+  echo ""
+done
