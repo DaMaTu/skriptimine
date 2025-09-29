@@ -1,0 +1,28 @@
+#!/bin/bash
+# Autor: [Matthias Järvet]
+# Skripti nimi: menu
+# Ülesanne: kuvab toidumenüü ja väljastab kirjelduse vastavalt kasutaja valikule
+
+echo "1) liha ja kartulid"
+echo "2) kala ja krõpsud"
+echo "3) supp ja salat"
+echo -n "Tee oma valik (1, 2 või 3): "
+read valik
+
+case "$valik" in
+    1)
+        echo "Väga maitsev, aga jälgi oma tervist!"
+        echo "Head isu!"
+        ;;
+    2)
+        echo "Brititoit on maitsev!"
+        echo "Head isu!"
+        ;;
+    3)
+        echo "Nii tervislik ja igav..."
+        echo "Head isu!"
+        ;;
+    *)
+        echo "Viga: vale sisestus! Palun vali ainult 1, 2 või 3."
+        ;;
+esac
