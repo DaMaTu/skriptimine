@@ -1,0 +1,19 @@
+#!/bin/bash
+# Autor: [Matthias Järvet]
+# Skripti nimi: kujund
+# Ülesanne: küsib ridade arvu ja kuvab kujundi
+
+read -p "Sisesta ridade arv: " read_arv
+
+# Kontroll, kas sisestus on täisarv > 0
+if ! [[ "$read_arv" =~ ^[0-9]+$ ]] || [ "$read_arv" -le 0 ]; then
+    echo "Viga: palun sisesta positiivne täisarv!"
+    exit 1
+fi
+
+for ((i=read_arv; i>=1; i--)); do
+    for ((j=1; j<=i; j++)); do
+        echo -n "* "
+    done
+    echo ""
+done
