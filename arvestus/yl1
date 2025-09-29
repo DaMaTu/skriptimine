@@ -1,0 +1,7 @@
+#!/bin/bash
+# Autor: [Matthias Järvet]
+# Skripti nimi: info
+# Ülesanne: tervitab kasutajat ja näitab kuupäeva/kellaega
+
+echo "Tere, Matthias!"
+echo "Täna on $(date +%d.%m.%Y) kell $(date +%H:%M)"
